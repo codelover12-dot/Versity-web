@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISTIAN's Portal</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* --- হোম পেজ (Responsive PRO) --- */
+        #enter-page {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(-45deg, #f39c12, #e67e22, #2c3e50, #d35400);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            position: relative;
+            padding: 20px;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 40px 20px;
+            border-radius: 30px;
+            text-align: center;
+            z-index: 10;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .content h1 {
+            font-size: clamp(1.8rem, 8vw, 3rem);
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+
+        .typing-box {
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 0 auto;
+            width: fit-content;
+            animation: typing 3s steps(15) forwards;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        .enter-btn {
+            background: linear-gradient(90deg, #fff, #f39c12);
+            color: #2c3e50;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 12px;
+            font-weight: 900;
+            transition: 0.4s;
+            text-transform: uppercase;
+        }
+
+        /* --- লগইন পেজ (আপনার পছন্দের অরেঞ্জ কালার ফিরিয়ে আনা হয়েছে) --- */
+        #login-page {
+            height: 100vh;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff9800, #f44336); /* আগের অরেঞ্জ-রেড লুক */
+            position: relative;
+            padding: 20px;
+        }
+
+        .back-btn {
+            position: absolute; top: 20px; left: 20px;
+            background: #3a3a3a; /* আপনার পছন্দের ডার্ক গ্রে ব্যাক বাটন */
+            color: white; border: none;
+            padding: 10px 18px; border-radius: 8px;
+            cursor: pointer; font-weight: bold;
+            z-index: 10;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .logo-container { 
+            width: 120px; 
+            height: auto;
+            margin: 0 auto 20px auto; 
+            display: block; 
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.15); /* গ্লাস ইফেক্ট */
+            padding: 40px 30px; border-radius: 20px;
+            text-align: center; width: 100%; max-width: 380px;
+            backdrop-filter: blur(15px); 
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        input {
+            width: 100%; padding: 12px 15px; margin: 10px 0;
+            border-radius: 10px; border: none;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 1rem; outline: none;
+        }
+
+        .login-btn {
+            width: 100%; padding: 12px;
+            background: #333; color: #fff; /* লগইন বাটন ব্ল্যাক */
+            border: none; border-radius: 10px;
+            font-weight: bold; cursor: pointer; margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .login-btn:hover { background: #000; }
+
+        @media (max-width: 400px) {
+            .content h1 { font-size: 1.5rem; }
+            .login-container { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="enter-page">
+        <div class="glass-card">
+            <div class="content">
+                <div class="typing-box">
+                    <h1>Welcome To IsT</h1>
+                </div>
+                <button class="enter-btn" onclick="goToLogin()">Enter</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="login-page">
+        <button class="back-btn" onclick="goBackToEnter()">← Back</button>
+        <div class="login-container">
+            <img src="ist-logo.png" alt="IST Logo" class="logo-container">
+            <h2 style="color:white; margin-bottom: 20px;">Sign In</h2>
+            <input type="text" placeholder="Student ID">
+            <input type="password" placeholder="Password">
+            <button class="login-btn">Login</button>
+            <p style="color:white; margin-top:15px; font-size:0.9rem;">Don't have an account? <a href="#" style="color:white; font-weight:bold; text-decoration: underline;">Sign Up</a></p>
+        </div>
+    </div>
+
+    <script>
+        function goToLogin() {
+            const enter = document.getElementById('enter-page');
+            const login = document.getElementById('login-page');
+            enter.style.transition = "0.5s";
+            enter.style.opacity = "0";
+            setTimeout(() => {
+                enter.style.display = "none";
+                login.style.display = "flex";
+                login.style.opacity = "0";
+                setTimeout(() => { login.style.opacity = "1"; login.style.transition = "0.5s"; }, 10);
+            }, 500);
+        }
+
+        function goBackToEnter() {
+            const login = document.getElementById('login-page');
+            const enter = document.getElementById('enter-page');
+            login.style.display = "none";
+            enter.style.display = "flex";
+            enter.style.opacity = "1";
+            
+            const typingBox = document.querySelector('.typing-box');
+            typingBox.style.animation = 'none';
+            typingBox.offsetHeight;
+            typingBox.style.animation = null;
+        }
+    </script>
+</body>
+</html>
